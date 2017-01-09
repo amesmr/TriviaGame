@@ -227,6 +227,7 @@ function nextQuestion() {
   $(".poss2").show();
   $(".poss3").show();
   $(".question").show();
+
   // hide the others  
   $(".result1").hide();
   $(".result2").hide();
@@ -234,6 +235,7 @@ function nextQuestion() {
   // clear the results if they're shown
   $(".result1").html("");
   $(".result2").html("");
+  
   // randomly select one of the question objects
   secondsLeft = 15;
   var qIndex;
