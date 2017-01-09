@@ -1,3 +1,4 @@
+// testing.  empty change to try to figure out why heroku has a different app.js file that git does
 var QAarry = [{
   question: "In what year did Nintendo release its first game console in North America?",
   answer0: "1985",
@@ -235,7 +236,7 @@ function nextQuestion() {
   // clear the results if they're shown
   $(".result1").html("");
   $(".result2").html("");
-  
+
   // randomly select one of the question objects
   secondsLeft = 15;
   var qIndex;
