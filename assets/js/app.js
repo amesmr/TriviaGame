@@ -115,7 +115,7 @@ var QAarry = [{
    today are not active, but parked domains or similar.",
   delay: 10
 }, {
-  question: "In 1945, Grace Hopper discovered the first computer bug.  What caused it?",
+  question: "<h3>In 1945, Grace Hopper discovered the first computer bug.  What caused it?",
   answer0: "A moth",
   answer1: "An error in logic",
   answer2: "A blown cathode ray tube",
@@ -140,7 +140,7 @@ function updateTimer() {
     showResult(100);
     unanswered++;
   } else {
-    $(".timer").html("Time remaining : " + secondsLeft)
+    $(".timer").html("<h4>Time remaining : " + secondsLeft + "</h4>")
   }
 }
 
@@ -164,15 +164,15 @@ function showResult(index) {
   var thisImg = QAarry[$(".correct").data("qIndex")].image;
   if (index < 0) {
     // wrong answer
-    $(".question").html("Sorry, the correct answer is \"" + thisAnswer + "\".");
+    $(".question").html("<h3>Sorry, the correct answer is \"" + thisAnswer + "\".</h3>");
   } else if (index < QAarry.length) {
     // correct answer
-    $(".question").html("That's right! The correct answer is \"" + thisAnswer + "\".");
+    $(".question").html("<h3>That's right! The correct answer is \"" + thisAnswer + "\".</h3>");
   } else {
-    $(".question").html("Oh, no!  You're out of time.  The correct answer is \"" + thisAnswer + "\".");
+    $(".question").html("<h3>Oh, no!  You're out of time.  The correct answer is \"" + thisAnswer + "\".</h3>");
   }
 
-  $(".result1").html("Did you know that " + thisFact);
+  $(".result1").html("<h4>Did you know that " + thisFact + "</h4>");
   $("img").attr("src", thisImg);
   $("img").show();
 
@@ -180,7 +180,7 @@ function showResult(index) {
   // the length of the delay is proportional to the length of the factoid
   setTimeout(nextQuestion, 1000 * QAarry[$(".correct").data("qIndex")].delay);
 
-  // clear out the data and correct class from the div
+  // clear out the data and correct class from the response div
   $(".correct").data("qIndex", "")
   $(".correct").removeClass("correct")
 
@@ -206,9 +206,9 @@ function finalResults() {
   // show the restart button
   $("#btn").show();
   // show the user's results for the game
-  $(".question").html("Out of " + QAarry.length + " questions, you got " + right + " answers correct.").show();
-  $(".result1").html("You got " + wrong + " answers wrong.").show();
-  $(".result2").html("And you left " + unanswered + " questions unanswered.").show();
+  $(".question").html("<h3>Out of " + QAarry.length + " questions, you got " + right + " answers correct.</h3>").show();
+  $(".result1").html("<h4>You got " + wrong + " answers wrong.</h4>").show();
+  $(".result2").html("<h4>And you left " + unanswered + " questions unanswered.</h4>").show();
 }
 
 function nextQuestion() {
@@ -242,7 +242,7 @@ function nextQuestion() {
     qIndex = Math.floor(Math.random() * QAarry.length);
   }
   // display the question
-  $(".question").html(QAarry[qIndex].question);
+  $(".question").html("<h3>" + QAarry[qIndex].question + "</h3>");
   $(".question").show();
 
   // push this question's index into the array so that it doesn't get used again until restarting
@@ -257,7 +257,7 @@ function nextQuestion() {
     // just to complain.  it was really hard to figure out how to reach for answerX
     var currAnswer = QAarry[qIndex]["answer" + ((i + aIndex + 1) % 4)];
     //console.log("currAnswer = " + currAnswer);
-    $(".poss" + i).html(currAnswer);
+    $(".poss" + i).html("<h4>" + currAnswer + "</h4>");
     // if the index of the question is answer0 then it is the correct answer
     // put in an easy to grab hook to check later
     if (((i + aIndex + 1) % 4) == 0) {
@@ -269,7 +269,7 @@ function nextQuestion() {
   stopIntervals();
   countdown = setInterval(updateTimer, 1000);
   // set the timer value to prevent the page from re-sizing
-  $(".timer").html("Time remaining : " + secondsLeft);
+  $(".timer").html("<h4>Time remaining : " + secondsLeft + "</h4>");
 }
 
 function stopIntervals() {
