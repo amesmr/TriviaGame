@@ -1,9 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/background.jpg");
+    background-size: 100%;
+    font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+}
 
+img {
+	height: 300px;
+}
 
+.timer, 
+.question,
+.result,
+.response, 
+button {
+	background-color: #a9947b;
+}
 
-
-
-
+button {
+    display: inline-block;
+    font-size: 24px;
+}
 
 
 /**************************************************************************/

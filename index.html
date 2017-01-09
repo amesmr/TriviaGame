@@ -2,59 +2,90 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Computer Trivia Game</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Latest compiled and minified JQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- Local stylesheet, JS, etc. -->
-    <script type="text/javascript" src="assets/js/game.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Computer Trivia Game</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Latest compiled and minified JQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Local stylesheet, JS, etc. -->
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
-<body>
-    <!-- Starting Navbar -->
-    <!-- Starting Navbar -->
-    <!-- Starting Navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <p class="navbar-brand">Matthew Ames</p>
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse navbar-left" id="navbar-main">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false">Menu<span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="download">
-                            <li>
-                                <form class="navbar-form">
-                                    <div class="form-group">
-                                        <p>Clicking Restart will reset all counters and start the game over</p>
-                                        <button type="button" class="btn btn-default" onclick="location.reload(true)">Restart
-                                        </button>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body> 
+  <!-- Starting Navbar -->
+  <!-- Starting Navbar -->
+  <!-- Starting Navbar -->
+<!--   <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="navbar-brand">Matthew Ames</p>
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse navbar-left" id="navbar-main">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false">Menu<span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              <li>
+                <form class="navbar-form">
+                  <div class="form-group">
+                    <p>Clicking Restart will reset all counters and start the game over</p>
+                    <button type="button" class="btn btn-default" onclick="location.reload(true)">Restart
+                    </button>
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!-- Starting main content -->
-    <!-- Starting main content -->
-    <!-- Starting main content -->
-    <div class="container">
+  </div> -->
+  <!-- Starting main content -->
+  <!-- Starting main content -->
+  <!-- Starting main content -->
+  <div class="container">
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6">
+        <img src=# alt="picture of answer"
+      </div>
     </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="timer"></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h1 class="question"></h1></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="result"></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="poss0 response"></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="poss1 response" ></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="poss2 response"></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><h2 class="poss3 response"></h2></div>
+    </div>
+    <div class=row>
+      <div class="col-md-offset-3 col-md-6"><button type="button">Start Again?</button></div>
+    </div>
+  </div>
+  </div>
 </body>
 
 </html>
