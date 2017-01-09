@@ -6,6 +6,7 @@ var QAarry = [{
   answer3: "1984",
   image: "assets/images/nintendo.jpg",
   factoid: " the first truly accessible game console was Pong, released in 1972 by Atari?",
+  delay: 5
 }, {
   question: "Steve Jobs, Steve Wozniak, and Ronald Wayne founded what company in 1976?",
   answer0: "Apple Computer, Inc.",
@@ -14,6 +15,7 @@ var QAarry = [{
   answer3: "Disney Studios",
   image: "assets/images/appleInc.jpg",
   factoid: "one of the original Apple computers sold for more than $387,000 in 2013?",
+  delay: 5
 }, {
   question: "What year was Facebook founded?",
   answer0: "2004",
@@ -22,6 +24,7 @@ var QAarry = [{
   answer3: "2006",
   image: "assets/images/facebook.png",
   factoid: "Al Pacino was the first \“face\” on Facebook?",
+  delay: 4
 }, {
   question: "In computer science, what does \"GUI\" stand for?",
   answer0: "Graphical User Interface",
@@ -30,6 +33,7 @@ var QAarry = [{
   answer3: "Get Unusually Intoxicated",
   image: "assets/images/GUI.jpg",
   factoid: "Xerox Star workstation introduced the first commercial GUI operating system in 1981?",
+  delay: 5
 }, {
   question: "In database programming, SQL is an acronym for what?",
   answer0: "Structured Query Language",
@@ -39,6 +43,7 @@ var QAarry = [{
   image: "assets/images/SQL.png",
   factoid: "it was created in the early 1970s and called SEQUEL (short for Structured English QUEry Language)? \
   The name of the language was later changed from SEQUEL to SQL because of a trademark dispute.",
+  delay: 10
 }, {
   question: "CERN launched the very first website in what year?",
   answer0: "1990",
@@ -47,7 +52,9 @@ var QAarry = [{
   answer3: "1992",
   image: "assets/images/CERN.png",
   factoid: "it was created by Tim Berners-Lee? He also developed the first web browser, the URL format, \
-  hypertext markup language (HTML), and the Hypertext Transfer Protocol (HTTP)",
+  hypertext markup language (HTML), and the Hypertext Transfer Protocol (HTTP)!  Wow!   Bob Kahn is credited \
+  with inventing TCP and IP which are the protocols used for trasnmitting internet data back and forth.",
+  delay: 12
 }, {
   question: "The companies HP, Microsoft and Apple were all started in a what?",
   answer0: "Garage",
@@ -56,6 +63,7 @@ var QAarry = [{
   answer3: "University",
   image: "assets/images/ms-apple-hp.jpg",
   factoid: "that Steve Jobs was fired from Apple in 1985?",
+  delay: 5
 }, {
   question: "When referring to computer memory, what does that acronym RAM stand for?",
   answer0: "Random Access Memory",
@@ -65,6 +73,7 @@ var QAarry = [{
   image: "assets/images/ram.jpg",
   factoid: "that it is also \"volatile\" memory?  This means that it can be read from and written to.  \
   Unlike ROM (Read Only Memory).",
+  delay: 8
 }, {
   question: "What do the letters HTML, a markup language used to create web pages, stand for?",
   answer0: "Hypertext Markup Language",
@@ -74,6 +83,7 @@ var QAarry = [{
   image: "assets/images/html.jpg",
   factoid: "that HTML5 isn't really an upgrade for HTML, but a replacement for XHTML, \
   which many consider a mistake?",
+  delay: 8
 }, {
   question: "Who is credited with inventing the first mechanical computer and in what year?",
   answer0: "Charles Babbage, 1840s",
@@ -83,6 +93,7 @@ var QAarry = [{
   image: "assets/images/charlesbabbage.png",
   factoid: "in 1945, ENIAC (Electronic Numerical Integrator And Computer) was amongst the earliest \
   electronic general-purpose computers made?",
+  delay: 9
 }, {
   question: "One kilobyte is equal to how many bytes?",
   answer0: "1024",
@@ -92,6 +103,7 @@ var QAarry = [{
   image: "assets/images/kilobyte.jpg",
   factoid: "in 1976, the typical amount of RAM was 8KB.  Today the typical amount of RAM is 3GB.  \
   Today's is 3,145,728 times larger than back then!!",
+  delay: 9
 }, {
   question: "What does HTTP stand for in a website address?",
   answer0: "HyperText Transfer Protocol",
@@ -101,6 +113,7 @@ var QAarry = [{
   image: "assets/images/http.gif",
   factoid: "there are at least 1,132,663,548 web pages?  It must be noted that around 75% of URLs\
    today are not active, but parked domains or similar.",
+   delay: 10
 }, {
   question: "In 1945, Grace Hopper discovered the first computer bug.  What caused it?",
   answer0: "A moth",
@@ -110,6 +123,7 @@ var QAarry = [{
   image: "assets/images/GraceHopper.jpg",
   factoid: "that she invented the first compiler for a computer programming language, and helped to \
   develope COBOL and FORTRAN?  Two of the first programming languages?",
+  delay: 10
 }];
 
 var countdown;
@@ -158,37 +172,43 @@ function showResult(index) {
     $(".question").html("Oh, no!  You're out of time.  The correct answer is \"" + thisAnswer + "\".");
   }
 
-  $(".result").html("Did you know that " + thisFact);
+  $(".result1").html("Did you know that " + thisFact);
   $("img").attr("src", thisImg);
   $("img").show();
+
+  // let the user see the answer and then load the next question
+  // the length of the delay is proportional to the length of the factoid
+  setTimeout(nextQuestion, 1000 * QAarry[$(".correct").data("qIndex")].delay);
+
   // clear out the data and correct class from the div
   $(".correct").data("qIndex", "")
   $(".correct").removeClass("correct")
+
     // lets go ahead and clear the timer and the answers to unclutter the page
-  $(".timer").empty();
-  $(".poss0").empty();
-  $(".poss1").empty();
-  $(".poss2").empty();
-  $(".poss3").empty();
-  // let the user see the answer and then load the next question
-  setTimeout(nextQuestion, 1000 * 9);
+  $(".timer").hide();
+  $(".poss0").hide();
+  $(".poss1").hide();
+  $(".poss2").hide();
+  $(".poss3").hide();  
+  $(".result1").show();
+  $(".result2").hide();
 }
 
 function finalResults() {
   // Stop the timer
   stopIntervals();
   // lets go ahead and clear the timer and the answers to unclutter the page
-  $(".timer").empty();
-  $(".poss0").empty();
-  $(".poss1").empty();
-  $(".poss2").empty();
-  $(".poss3").empty();
+  $(".timer").hide();
+  $(".poss1").hide();
+  $(".poss2").hide();
+  $(".poss3").hide();
   $("img").hide();
   // show the restart button
   $("button").show();
-  $(".question").html("Out of " + QAarry.length + " questions, you got " + right + " answers correct.");
-  $(".result").html("You got " + wrong + " answers wrong.");
-  $(".poss0").html("And you left " + unanswered + " questions unanswered.");
+  // show the user's results for the game
+  $(".question").html("Out of " + QAarry.length + " questions, you got " + right + " answers correct.").show();
+  $(".result1").html("You got " + wrong + " answers wrong.").show();
+  $(".result2").html("And you left " + unanswered + " questions unanswered.").show();
 }
 
 function nextQuestion() {
@@ -198,10 +218,22 @@ function nextQuestion() {
     finalResults();
     return false;
   }
-  // hide the image
+  // hide the image for the answer
   $("img").hide();
+  // show the hidden wells
+  $(".timer").show();
+  $(".poss0").show();
+  $(".poss1").show();
+  $(".poss2").show();
+  $(".poss3").show();
+  $(".question").show();
+  // hide the others  
+  $(".result1").hide();
+  $(".result2").hide();
+
   // clear the results if they're shown
-  $(".result").html("");
+  $(".result1").html("");
+  $(".result2").html("");
   // randomly select one of the question objects
   secondsLeft = 15;
   var qIndex;
@@ -211,6 +243,7 @@ function nextQuestion() {
   }
   // display the question
   $(".question").html(QAarry[qIndex].question);
+  $(".question").show();
 
   // push this question's index into the array so that it doesn't get used again until restarting
   usedQuestions.push(qIndex);
@@ -218,7 +251,7 @@ function nextQuestion() {
   //console.log(QAarry[qIndex].question);
   // display the possible answers randomly
   aIndex = Math.floor(Math.random() * 4);
-  console.log("aIndex = " + aIndex);
+  //console.log("aIndex = " + aIndex);
   for (i = 0; i < 4; i++) {
     // just to complain.  it was really hard to figure out how to reach for answerX
     var currAnswer = QAarry[qIndex]["answer" + ((i + aIndex + 1) % 4)];
@@ -235,22 +268,21 @@ function nextQuestion() {
   stopIntervals();
   countdown = setInterval(updateTimer, 1000);
   // set the timer value to prevent the page from re-sizing
-  $(".timer").html(secondsLeft)
-
+  $(".timer").html(secondsLeft);
 }
 
 function stopIntervals() {
   for (i = 0; i <= countdown; i++) {
     clearInterval(i);
   }
-
 }
+
 $(document).ready(function() {
 
   initGame();
 
   $(".response").on('click', function() {
-    console.log(this);
+    //console.log(this);
     if ($(this).hasClass("correct")) {
       // correct answer
       showResult($(this).data("qIndex"));
@@ -265,6 +297,5 @@ $(document).ready(function() {
   $("button").click(function() {
     initGame()
   });
-
 
 });
