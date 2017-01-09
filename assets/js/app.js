@@ -102,8 +102,8 @@ var QAarry = [{
   answer3: "1064",
   image: "assets/images/kilobyte.jpg",
   factoid: "in 1976, the typical amount of RAM was 8KB.  Today the typical amount of RAM is 3GB.  \
-  Today's is 3,145,728 times larger than back then!!",
-  delay: 9
+  That's an increase of 3,145,728 times!!",
+  delay: 8
 }, {
   question: "What does HTTP stand for in a website address?",
   answer0: "HyperText Transfer Protocol",
@@ -113,7 +113,7 @@ var QAarry = [{
   image: "assets/images/http.gif",
   factoid: "there are at least 1,132,663,548 web pages?  It must be noted that around 75% of URLs\
    today are not active, but parked domains or similar.",
-   delay: 10
+  delay: 10
 }, {
   question: "In 1945, Grace Hopper discovered the first computer bug.  What caused it?",
   answer0: "A moth",
@@ -152,7 +152,7 @@ function initGame() {
   nextQuestion();
   $("img").hide();
   // if player is restarting, hide the button
-  $("button").hide();
+  $("#btn").hide();
 }
 
 
@@ -184,12 +184,12 @@ function showResult(index) {
   $(".correct").data("qIndex", "")
   $(".correct").removeClass("correct")
 
-    // lets go ahead and clear the timer and the answers to unclutter the page
+  // lets go ahead and clear the timer and the answers to unclutter the page
   $(".timer").hide();
   $(".poss0").hide();
   $(".poss1").hide();
   $(".poss2").hide();
-  $(".poss3").hide();  
+  $(".poss3").hide();
   $(".result1").show();
   $(".result2").hide();
 }
@@ -204,7 +204,7 @@ function finalResults() {
   $(".poss3").hide();
   $("img").hide();
   // show the restart button
-  $("button").show();
+  $("#btn").show();
   // show the user's results for the game
   $(".question").html("Out of " + QAarry.length + " questions, you got " + right + " answers correct.").show();
   $(".result1").html("You got " + wrong + " answers wrong.").show();
@@ -249,6 +249,7 @@ function nextQuestion() {
   usedQuestions.push(qIndex);
 
   //console.log(QAarry[qIndex].question);
+
   // display the possible answers randomly
   aIndex = Math.floor(Math.random() * 4);
   //console.log("aIndex = " + aIndex);
@@ -268,7 +269,7 @@ function nextQuestion() {
   stopIntervals();
   countdown = setInterval(updateTimer, 1000);
   // set the timer value to prevent the page from re-sizing
-  $(".timer").html(secondsLeft);
+  $(".timer").html("Time remaining : " + secondsLeft);
 }
 
 function stopIntervals() {
@@ -277,10 +278,90 @@ function stopIntervals() {
   }
 }
 
+function ReSize() {
+  if ($(this).width() <= '480') {
+    $(".pic").attr("class", "pic col-xs-10 col-offset-xs-1");
+    $(".timer").attr("class", "timer well col-xs-12");
+    $(".question").attr("class", "question well col-xs-12");
+    $(".result1").attr("class", "result1 well col-xs-12");
+    $(".result2").attr("class", "result2 well col-xs-12");
+    for (i = 0; i < 4; i++) {
+      if ($(".poss" + i).hasClass("correct")) {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-xs-12 correct");
+      } else {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-xs-12");
+      }
+    }
+    $("img").css({
+      "height": "150px",
+    });
+    $("#btn").css({
+      "font-size": "16px"
+    });
+  } else if ($(this).width() <= '768') {
+    $(".pic").attr("class", "pic col-sm-8 col-offset-sm-4");
+    $(".timer").attr("class", "timer well col-sm-6 col-offset-sm-3");
+    $(".question").attr("class", "question well col-sm-6 col-offset-sm-3");
+    $(".result1").attr("class", "result1 well col-sm-6 col-offset-sm-3");
+    $(".result2").attr("class", "result2 well col-sm-6 col-offset-sm-3");
+    for (i = 0; i < 4; i++) {
+      if ($(".poss" + i).hasClass("correct")) {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-sm-6 col-offset-sm-3 correct");
+      } else {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-sm-6 col-offset-sm-3");
+      }
+    }
+    $("img").css({
+      "height": "200px",
+    });
+    $("#btn").css({
+      "font-size": "18px"
+    });
+  } else if ($(this).width() <= '980') {
+    $(".pic").attr("class", "pic col-md-6 col-offset-md-3");
+    $(".timer").attr("class", "timer well col-md-6 col-offset-md-3");
+    $(".question").attr("class", "question well col-md-6 col-offset-md-3");
+    $(".result1").attr("class", "result1 well col-md-6 col-offset-md-3");
+    $(".result2").attr("class", "result2 well col-md-6 col-offset-md-3");
+    for (i = 0; i < 4; i++) {
+      if ($(".poss" + i).hasClass("correct")) {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-md-6 col-offset-md-3 correct");
+      } else {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-md-6 col-offset-md-3");
+      }
+    }
+    $("img").css({
+      "height": "300px",
+    });
+    $("#btn").css({
+      "font-size": "20px"
+    });
+  } else {
+    $(".pic").attr("class", "pic col-lg-6 col-offset-xs-3");
+    $(".timer").attr("class", "timer well col-lg-6 col-offset-lg-3");
+    $(".question").attr("class", "question well col-lg-6 col-offset-lg-3");
+    $(".result1").attr("class", "result1 well col-lg-6 col-offset-lg-3");
+    $(".result2").attr("class", "result2 well col-lg-6 col-offset-lg-3");
+    for (i = 0; i < 4; i++) {
+      if ($(".poss" + i).hasClass("correct")) {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-lg-6 col-offset-lg-3 correct");
+      } else {
+        $(".poss" + i).attr("class", "poss" + i + " response well col-lg-6 col-offset-lg-3");
+      }
+    }
+    $("img").css({
+      "height": "300px",
+    });
+    $("#btn").css({
+      "font-size": "24px"
+    });
+  }
+}
 $(document).ready(function() {
 
   initGame();
 
+  // user clicked on an answer to the question
   $(".response").on('click', function() {
     //console.log(this);
     if ($(this).hasClass("correct")) {
@@ -293,9 +374,18 @@ $(document).ready(function() {
       wrong++;
     }
   });
+
   // button to restart the game
-  $("button").click(function() {
+  $("#btn").click(function() {
     initGame()
   });
+
+
+  $(window).resize(function() {
+    ReSize();
+  });
+
+
+  ReSize();
 
 });
